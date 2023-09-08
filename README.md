@@ -31,6 +31,92 @@ In modern computing, the producer-consumer pattern is seen in various scenarios:
 
 The producer-consumer problem is a fundamental concept in concurrent programming, and understanding its challenges and solutions is essential for designing systems that require synchronization between threads or processes.
 
+The Producer-Consumer problem is a classical synchronization problem where the producer places items into a buffer (or shared resource), and the consumer takes items out. Multithreading often plays a role in solving this problem because the producer and consumer can operate in parallel in different threads.
+
+Here's a basic outline to solve the Producer-Consumer problem in C using the POSIX threads library (`pthreads`):
+
+1. **Shared Resource**: A shared buffer where items are placed by the producer and taken out by the consumer.
+
+2. **Mutex**: A mutual exclusion primitive to ensure that only one thread accesses the shared resource at a time.
+
+3. **Condition Variables**: Used to signal and wait. They can be used to notify the consumer when the buffer is not empty (so there's something to consume) and to notify the producer when the buffer is not full (so there's space to produce).
+
+Here's a simple example using an array as a shared buffer:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+#define BUFFER_SIZE 5
+
+int buffer[BUFFER_SIZE];
+int count = 0; // Number of items in the buffer
+int in = 0;   // Position to insert
+int out = 0;  // Position to remove
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t not_empty = PTHREAD_COND_INITIALIZER;
+pthread_cond_t not_full = PTHREAD_COND_INITIALIZER;
+
+void* producer(void* arg) {
+    for (int i = 0; i < 20; i++) {
+        pthread_mutex_lock(&mutex);
+        while (count == BUFFER_SIZE) { // Buffer full
+            pthread_cond_wait(&not_full, &mutex);
+        }
+        buffer[in] = i;
+        in = (in + 1) % BUFFER_SIZE;
+        count++;
+        pthread_cond_signal(&not_empty);
+        pthread_mutex_unlock(&mutex);
+    }
+    return NULL;
+}
+
+void* consumer(void* arg) {
+    for (int i = 0; i < 20; i++) {
+        pthread_mutex_lock(&mutex);
+        while (count == 0) { // Buffer empty
+            pthread_cond_wait(&not_empty, &mutex);
+        }
+        int item = buffer[out];
+        out = (out + 1) % BUFFER_SIZE;
+        count--;
+        pthread_cond_signal(&not_full);
+        pthread_mutex_unlock(&mutex);
+        printf("Consumed %d\n", item);
+    }
+    return NULL;
+}
+
+int main() {
+    pthread_t producer_thread, consumer_thread;
+
+    pthread_create(&producer_thread, NULL, producer, NULL);
+    pthread_create(&consumer_thread, NULL, consumer, NULL);
+
+    pthread_join(producer_thread, NULL);
+    pthread_join(consumer_thread, NULL);
+
+    return 0;
+}
+```
+
+In this example:
+
+- The producer produces 20 items.
+- The consumer consumes these 20 items.
+- Both threads can work concurrently.
+- Mutex ensures mutual exclusion for the shared buffer.
+- Condition variables ensure synchronization, i.e., the producer will wait if the buffer is full, and the consumer will wait if the buffer is empty.
+
+You may need to link against the pthreads library when compiling, like so:
+```bash
+gcc program.c -o output -lpthread
+```
+
+This is a simple example, and in real-world scenarios, additional complexities might arise. But the fundamental principles remain the same: use mutexes to protect shared resources and condition variables to synchronize between threads.
 ```
                              +--------------------------+
                              |                          |
