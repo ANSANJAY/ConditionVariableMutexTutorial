@@ -25,8 +25,24 @@
 
 ## Producer-Consumer Problem 🔄
 
+### Consumer Thread Steps 🛠️
+
+1. **Step S1**: Consumer thread grabs a lock on the queue.
+2. **Step S2**: Checks the state of the queue. If empty, it will get blocked.
+3. **Step S3**: Invokes `pthread_condition_wait()` to block itself when queue is empty.
+
+### Producer Thread Steps 🛠️
+
+1. **Step S6**: Producer thread grabs a lock on the queue.
+2. **Step S7**: Checks the state of the queue. If not full, pushes new element into the queue.
+3. **Step S8**: Sends signal to the condition variable, notifying the consumer thread.
+4. **Step S9**: Unlocks the mutex.
+
+---
+
 ### Pseudocode 📝
 - We discussed pseudocode for consumer (steps S1, S2, S3, S4, S5) and producer (steps S6, S7, S8, S9).
+  
 
 ### Loopholes and Problematic States 🕳️
 - The consumer thread must not execute step S4 on an empty queue; otherwise, the program enters a problematic state.
