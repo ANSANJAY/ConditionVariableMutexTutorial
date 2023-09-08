@@ -3,7 +3,7 @@
 ## Introduction 🎬
 
 - **Objective**: To implement the solution to the producer-consumer problem with thread synchronization.
-- **Context**: Building on a previous lecture that described the problem statement and flowcharts for the producer and consumer.
+- **Context**: Building on previous notes that described the problem statement and flowcharts for the producer and consumer.
 - **Key Concepts**: Mutex Locking, Condition Variables, Thread Synchronization.
   
 ## Implementation Steps 🛠️
@@ -29,7 +29,7 @@
 #### Step S4: Consume from Queue 🍔
 
 - Check if the queue is full, if not crash the program (as per problem constraints).
-- Start consuming elements one-by-one until the queue is empty.
+- Start consuming elements one by one until the queue is empty.
 
 #### Step S5: Unlock and Exit 🔓
 
@@ -57,12 +57,6 @@
 - Send a broadcast signal for any waiting consumer threads.
 - Unlock the mutex and exit the thread.
 
-## Key Takeaways 🎯
-
-- Always check the state of the resource within a while loop.
-- Use of `pthread_condition_broadcast` instead of `pthread_condition_signal` will be clarified in the assignment.
-
----
 
 ## Interview Questions & Answers ❓
 
@@ -72,7 +66,7 @@
 
 ### What would happen if you replace `pthread_condition_broadcast` with `pthread_condition_signal`?
 
-👉 **Answer**: The choice between `pthread_condition_broadcast` and `pthread_condition_signal` determines how many threads are awakened from a blocked state. Using `pthread_condition_signal` could lead to potential issues which will be discussed in the assignment following this lecture.
+👉 **Answer**: The choice between `pthread_condition_broadcast` and `pthread_condition_signal` determines how many threads are awakened from a blocked state. 
 
 ### Why is checking the state of the queue done within a while loop?
 
