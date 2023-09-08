@@ -57,6 +57,9 @@
 - Send a broadcast signal for any waiting consumer threads.
 - Unlock the mutex and exit the thread.
 
+## Sample Output 
+
+![](./Screenshot%20from%202023-09-07%2021-14-59.png)
 
 ## Interview Questions & Answers ❓
 
