@@ -1,4 +1,4 @@
-# Producer-Consumer Problem in Multithreading: Detailed Notes 📝
+# Producer-Consumer Problem in Multithreading📝
 
 ## Introduction 🎬
 
