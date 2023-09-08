@@ -1,8 +1,4 @@
-Certainly! Below is a detailed set of notes in Markdown format, designed to help you revise the topic for interviews.
-
----
-
-# 📚 Weight and Signal: An Analogy with Mutex and Condition Variables 🍬🔒
+# 📚 Wait and Signal: An Analogy with Mutex and Condition Variables 🍬🔒
 
 ## 📑 Table of Contents
 
