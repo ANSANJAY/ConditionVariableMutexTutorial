@@ -2,7 +2,7 @@
 
 ## Overview :mega:
 
-This lecture focuses on understanding how condition variables are used in thread synchronization. Condition variables are fundamental for writing multithreaded programs and are extensively used alongside mutexes for advanced thread synchronization techniques.
+We focus on understanding how condition variables are used in thread synchronization. Condition variables are fundamental for writing multithreaded programs and are extensively used alongside mutexes for advanced thread synchronization techniques.
 
 ## Key Points :pushpin:
 
