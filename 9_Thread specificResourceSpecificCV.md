@@ -1,7 +1,7 @@
 # Mutex and Condition Variable: Detailed Notes for Interview Preparation 📝🎥
 
 ## Introduction 📚
-The video explains the concept of multiple condition variables in association with mutex and predicate. The discussion revolves around how many condition variables can be linked with a single mutex and how they behave in multithreading scenarios.
+The  explains the concept of multiple condition variables in association with mutex and predicate. The discussion revolves around how many condition variables can be linked with a single mutex and how they behave in multithreading scenarios.
 
 ---
 
@@ -49,7 +49,7 @@ The video explains the concept of multiple condition variables in association wi
 
 ### Resource-Specific Condition Variable
 - In this case, all threads share a single Condition Variable (`CV`).
-- Programmer loses control over which specific thread to unblock.
+- The programmer loses control over which specific thread to unblock.
 - The operating system will decide which thread to unblock.
 
 ---
@@ -84,7 +84,7 @@ A: In such a scenario, the decision of which thread to unblock shifts from the p
 
 ### Q5: Is the Mutex always the property of a resource?
 ```markdown
-A: Yes, Mutex is always the property of a resource, while a Condition Variable could be a property of a resource or a thread.
+A: Yes, Mutex is always the property of a resource, while a Condition Variable could be the property of a resource or a thread.
 ```
 
 Feel free to review these notes and prepare well for your interviews! 🍀👍
