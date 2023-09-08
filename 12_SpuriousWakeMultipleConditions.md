@@ -1,5 +1,5 @@
 
-# Notes on "How to Avoid Spurious Wake-up in Multi-threading with Multiple Conditions"
+# How to Avoid Spurious Wake-up in Multi-threading with Multiple Conditions
 
 ## Overview 📑
 This  focuses on avoiding spurious wake-ups when dealing with multiple conditions in a multi-threading environment. It builds upon the existing concept that spurious wake-ups can be handled by replacing an `if` statement with a `while` condition. It discusses how to effectively deal with multiple conditions through an analogy.
