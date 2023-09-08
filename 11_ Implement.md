@@ -1,23 +1,12 @@
 # Detailed Notes on Producer-Consumer Problem Implementation 📝
 
-## Overview 📚
-
-- The topic of this lecture is the implementation of the Producer-Consumer problem.
-- The code for this implementation is found in a specific directory, and is divided into multiple files:
-  - Main assignment file: `assignment_producer_consumer_on_Q.c`
-  - Queue data structure: `Q.c` and `Q.h`
-  - Compilation script: `compile.sh`
-
----
-
 ## Objective 🎯
 
 - The objective is to implement the Producer-Consumer problem using threads.
-- The problem uses a queue data structure as a shared resource.
+- The problem uses a `queue data structure` as a shared resource.
 - Four threads will be created in total:
   - Two consumer threads: `Tc1` and `Tc2`
   - Two producer threads: `Tp1` and `Tp2`
-
 ---
 
 ## Data Structure 🛠️
@@ -50,7 +39,7 @@
 
 - Mutex is used as a property of the resource (queue) being shared.
 - Condition variable is used as a property of the queue.
-- Threads will be blocked on this condition variable if the queue is not available.
+- Threads will be blocked on this `condition variable` if the queue is not available.
 
 ---
 
@@ -68,13 +57,6 @@
 ## Debugging & Logs 🐛
 
 - Use as many `printf` statements as possible for easier debugging.
-
----
-
-## Homework & Next Steps 📝
-
-- Try to implement the Producer-Consumer problem respecting all the discussed constraints.
-- The next lecture will discuss setting up the problem and writing the algorithms.
 
 ---
 
@@ -112,23 +94,19 @@
 
 ## Introduction 🌟
 
-The video focuses on implementing the Producer-Consumer problem, a classic example of multithreading, in C programming language. The tutorial provides a walkthrough of the code structure, problem statement, and expected outputs.
+The  focuses is on implementing the Producer-Consumer problem, a classic example of multithreading, in C programming language. The tutorial provides a walkthrough of the code structure, problem statement, and expected outputs.
 
 ---
 
 ## Directory Structure 📂
 
-- **Directory Path**: `Multithreading Bible/producer-consumer`
-- **Important Files**:
-    - Problem Statement: `assignment_producer_consumer_on_Q.c`
-    - Solution File: `assignment_producer_consumer_on_solution.c`
+- **Directory Path**: `https://github.com/ANSANJAY/ConditionVariableMutexTutorial/pkg`
     - Shell Script: Compiles source files into executables (`EXE` and `solution.EXE`)
-
 ---
 
 ## Exploring the Codebase 🛠️
 
-### Main File (`assignment_producer_consumer_on_Q.c`)
+### Main File (`producer_consumer_on_Q.c`)
 
 - **Global Queue Variable**: A pointer to the queue is globally defined.
 - **Main Function**: 
